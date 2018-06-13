@@ -1,0 +1,73 @@
+#other_text {
+	display: none;
+}
+.errors {
+	color: red;
+}
+.buttonOptions {
+	display: inline-block;
+}
+.buttonOptions form {
+	display: inline-block;
+}
+.octopic {
+	position: fixed;
+	top: 0;
+	right: 20px;
+	height: 500px;
+}
+#clamspic {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	height: 200px;
+}
+#squidpic {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	height: 200px;
+}
+#cuttlepic {
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	height: 250px;
+}
+#nautipic {
+	position: fixed;
+	top: 0px;
+	right: 0px;
+	height: 500px;
+}
+#musselpic {
+	position: fixed;
+	top: 0px;
+	right: 20px;
+	height: 250px;
+}
+#slugpic {
+	position: fixed;
+	top: 100px;
+	right: 20px;
+	height: 200px;
+}
+#snailpic {
+	position: fixed;
+	top: 100px;
+	right: 100px;
+	height: 150px;
+}
+#conchpic {
+	position: fixed;
+	top: 0px;
+	right: 20px;
+	height: 250px;
+}
+#conchp {
+	position: fixed;
+	top: 270px;
+	right: 20px;
+	width: 350px;
+	font-size: 0.7em;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mollusk - In Detail</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+<body>
+
+	<div class="container">
+		<% var name = response[0].common_name %>
+		<% if (name == "other") {
+			name = response[0].other_common_name
+		} %>
+		<% var split_name = name.charAt(0) %>
+
+		<% if (split_name == "a" || split_name == "e" || split_name == "i" ||  split_name == "o" ||  split_name == "u" || split_name == "A" || split_name == "E" || split_name == "I" || split_name == "O" || split_name == "U") { %>
+			<h2>Details about <%=response[0].name%>, an <%=name%>.</h2>
+
+		<% } else { %>
+
+		<h2>Details about <%=response[0].name%>, a <%=name%>.</h2>
+
+		<% } %>
+		<br>
+		<br>
+		<% if (name == "squid") { %>
+			<img id="squidpic" src="/images/squid.jpg" alt="Squid">
+		<% } else if (name == "octopus") { %>
+			<img class="octopic" src="/images/octopus.png" alt="Octopus">
+		<% } else if (name == "cuttlefish") { %>
+			<img id="cuttlepic" src="/images/cuttlefish.png" alt="Cuttlefish">
+		<% } else if (name == "nautilus") { %>
+			<img id="nautipic" src="/images/nautilus.png" alt="Nautilus">
+		<% } else if (name == "clam") { %>
+			<img id="clamspic" src="/images/clams.png" alt="Clams">
+		<% } else if (name == "mussel") { %>
+			<img id="musselpic" src="/images/mussels.png" alt="Mussels">
+		<% } else if (name == "slug") { %>
+			<img id="slugpic" src="/images/slug.png" alt="Banana slug">
+		<% } else if (name == "snail") { %>
+			<img id="snailpic" src="/images/snail.png" alt="Snail">
+		<% } else { %>
+
+				<img id="conchpic" src="/images/conch.jpg" alt="Conch">
+				<p id="conchp">This is a conch. It's unlikely it's a picture of what you expected, but it's the picture you were always hoping to see.</p>
+
+		<% } %>
+		<div class="row">
+			<div class="col-md-3">
+				<p><strong><%=response[0].name%>'s and friends' tastiest dish:</strong></p>
+			</div>
+			<div class="col-md-4">
+				<p><%=response[0].dish%></p>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-md-3">
+				<p><strong>The stickiness of <%=response[0].name%>'s mucus, on a scale of 1-5:</strong></p>
+			</div>
+			<div class="col-md-4">
+				<p><%=response[0].mucus%></p>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-md-3">
+				<p><strong>Where <%=response[0].name%> thrives, and would probably prefer to be taken on a date:</strong></p>
+			</div>
+			<div class="col-md-4">
+				<!--Here we'll go through the habitats array and have a particular sentence for each possibility-->
+					<% for(var i=0; i<response[0].habitats.length; i++){
+						 if(response[0].habitats[i]=="seabed"){ %>
+							<p>Way down deep in the seabed.</p>
+						<% }
+						if(response[0].habitats[i]=="land") { %>
+							<p>Right here on dry land.</p>
+						<% }
+						if(response[0].habitats[i]=="tidal") { %>
+							<p>The rocky tidal zone. Careful, it's slippery!</p>
+						<% }
+						if(response[0].habitats[i]=="marine") { %>
+							<p>Marine areas, that narrows it down to only about 70% of the earth.</p>
+						<% }
+						if(response[0].habitats[i]=="fresh") { %>
+							<p>Freshwater, of which there is surprisingly little on this planet.</p>
+						<% }
+						if(response[0].habitats[i]=="intestine") { %>
+							<p>The small intestine! The question is, whose? Are you volunteering?</p>
+						<% }
+						if(response[0].habitats[i]=="estuary") { %>
+							<p>An estuary, a rather intricate mixture of salt and freshwater.</p>
+						<% }
+						if(response[0].habitats[i]=="core") { %>
+							<p>Way down deep in the earth's core. That's kind of surprising.</p>
+					 <% } %>
+					  <% } %>
+			</div>
+		</div>
+		<hr>
+		<div class="row">
+			<div class="col-md-3">
+				<p><strong>Further descriptions of <%=response[0].name%>:</strong></p>
+			</div>
+			<div class="col-md-4">
+				<p><%=response[0].description%></p>
+			</div>
+		</div>
+		<hr>
+		<div class="buttonOptions">
+			<form role='form' action='/' method='get'>
+				<button class="btn btn-primary" type="submit">Go back</button>
+			</form>
+			<form role='form' action='/mollusks/<%=response[0]._id%>/edit' method='get'>
+				<button class="btn btn-success" type="submit">Edit <%=response[0].name%></button>
+			</form>
+			<form role='form' action='/mollusks/<%=response[0]._id%>/destroy' method='post'>
+				<button class="btn btn-danger" type="submit">Delete <%=response[0].name%></button>
+			</form>
+		</div>
+
+	</div>
+
+<script>
+
+
+
+	console.log("ready");
+
+
+
+</script>
+
+</body>
+</html>

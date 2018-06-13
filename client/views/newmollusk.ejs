@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>New Mollusk</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+<body>
+
+	<div class="container">
+
+		<h3>Fill out this form to submit a new mollusk</h3>
+		<div class="errors">
+		<% if(typeof(errors) != 'undefined') { %>
+			<% for (var x in errors) {
+				if(errors[x].message == "Path `name` is required.") { %>
+				<h4>You need to provide a name!</h4>
+				<% }  %>
+				<% if(errors[x].message == "Path `habitats` is required.") { %>
+				<h4>You need to tell us the mollusk's habitats!</h4>
+			<% } %>
+		<% } %>
+		<% } %>
+		</div>
+		 <form role='form' action='/mollusks' method='post'>
+			<div class='form-group'>
+				<label for='name'>Name: </label>
+				<input type='text' class='form-control' name='name'>
+			</div>
+			<div class='form-group'>
+				<label for="common_name">Commonly known as: </label>
+				<select class='form-control' name='common_name' onchange='checkvalue(this.value)'>
+					<option value="squid">Squid</option>
+					<option value="octopus">Octopus</option>
+					<option value="cuttlefish">Cuttlefish</option>
+					<option value="nautilus">Nautilus</option>
+					<option value="clam">Clam</option>
+					<option value="mussel">Mussel</option>
+					<option value="slug">Slug</option>
+					<option value="snail">Snail</option>
+					<option value="other">Other</option>
+				</select>
+
+				<div class='form-group' id='other_text'>
+					<br>
+					<label for='other_text'>Okay, fussy, what would you rather call this mollusk?</label>
+					<input type="text" name="other_text_input" id="other_text_input" class='form-control'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label for='dish'>Best dish featuring this mollusk: </label>
+				<input type='text' name='dish' class='form-control'>
+			</div>
+			<div class='form-group'>
+				<label for='mucus'>Mucus stickiness level from 1-5: </label>
+				<select class='form-control' name='mucus'>
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+				</select>
+			</div>
+			<div class='form-group'>
+				<label for='habitats'>Favored habitats: </label>
+				<div id='habitats'>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="checkbox">
+								<label><input name="livingspot" type="checkbox" value="seabed">Seabed</label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="checkbox">
+								<label><input name="livingspot" type="checkbox" value="land">Land</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="checkbox">
+								<label><input name="livingspot" type="checkbox" value="tidal">Rocky tidal</label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="checkbox">
+								<label><input name="livingspot" type="checkbox" value="marine">Marine</label>
+							</div>
+						</div>
+
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="checkbox">
+								<label><input name="livingspot" type="checkbox" value="fresh">Freshwater</label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="checkbox">
+								<label><input name="livingspot" type="checkbox" value="intestine">Small intestine</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="checkbox">
+								<label><input name="livingspot" type="checkbox" value="estuary">Estuary</label>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="checkbox">
+								<label><input name="livingspot" type="checkbox" value="core">Earth's core</label>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class='form-group'>
+				<label for='description'>Any additional mollusk descriptions: </label>
+				<textarea rows='5' class='form-control' name='description'></textarea>
+			</div>
+			<button class="btn btn-success" type="submit">Add my mollusk!</button>
+
+		</form>
+
+
+
+
+	</div>
+	<script type="text/javascript">
+	function checkvalue(val){
+		if(val==="other"){
+			document.getElementById('other_text').style.display='block';
+		}
+		if(val != "other"){
+			document.getElementById('other_text').style.display = 'none';
+		}
+	}
+
+	</script>
+</body>
+</html>

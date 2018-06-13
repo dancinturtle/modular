@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Mollusk Dashboard - Index</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+</head>
+<body>
+	<div class="container">
+
+		<h3>Welcome to the Mollusk Dashboard!</h3>
+
+		<div class="row">
+			<div class="col-md-3">
+				<h4>Squid</h4>
+				<% for (squid in squad) { %>
+					<h5><a href="/mollusk/<%=squad[squid]._id%>"><%=squad[squid].name%></a></h5>
+				<% } %>
+			</div>
+			<div class="col-md-3">
+				<h4>Octopus</h4>
+				<% for (octopus in octopi) { %>
+					<h5><a href="/mollusk/<%=octopi[octopus]._id%>"><%=octopi[octopus].name%></a></h5>
+				<% } %>
+			</div>
+			<div class="col-md-3">
+				<h4>Cuttlefish</h4>
+				<% for (cuttle in cuttlefish) { %>
+					<h5><a href="/mollusk/<%=cuttlefish[cuttle]._id%>"><%=cuttlefish[cuttle].name%></a></h5>
+				<% } %>
+			</div>
+		</div>
+
+		<img class="octopic" src="/images/octopus.png" alt="Octopus">
+
+
+		<div class="row">
+			<div class="col-md-3">
+				<h4>Nautilus</h4>
+				<% for (nauti in nautili) { %>
+					<h5><a href="/mollusk/<%=nautili[nauti]._id%>"><%=nautili[nauti].name%></a></h5>
+				<% } %>
+			</div>
+			<div class="col-md-3">
+				<h4>Clams</h4>
+				<% for (clam in clams) { %>
+					<h5><a href="/mollusk/<%=clams[clam]._id%>"><%=clams[clam].name%></a></h5>
+				<% } %>
+			</div>
+			<div class="col-md-3">
+				<h4>Mussels</h4>
+				<% for (mussel in mussels) { %>
+					<h5><a href="/mollusk/<%=mussels[mussel]._id%>"><%=mussels[mussel].name%></a></h5>
+				<% } %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<h4>Slugs</h4>
+				<% for (slug in slugs) { %>
+					<h5><a href="/mollusk/<%=slugs[slug]._id%>"><%=slugs[slug].name%></a></h5>
+				<% } %>
+			</div>
+			<div class="col-md-3">
+				<h4>Snails</h4>
+				<% for (snail in snails) { %>
+					<h5><a href="/mollusk/<%=snails[snail]._id%>"><%=snails[snail].name%></a></h5>
+				<% } %>
+			</div>
+			<div class="col-md-3">
+				<h4>Others</h4>
+
+				<% for (other in others) { %>
+					<h5><a href="/mollusk/<%=others[other]._id%>"><%=others[other].name%>,
+					<% var split_name = others[other].other_common_name.charAt(0) %>
+					<% if (split_name == "a" || split_name == "e" || split_name == "i" ||  split_name == "o" ||  split_name == "u" || split_name == "A" || split_name == "E" || split_name == "I" || split_name == "O" || split_name == "U") { %>
+				 	an
+					<% } else { %>
+
+					a
+					<% } %>
+					<%=others[other].other_common_name%></a></h5>
+				<% } %>
+			</div>
+		</div>
+
+
+
+
+		<form role='form' action='/mollusks/new' method='get'>
+			<button class="btn btn-success" type="submit">Add a new mollusk!</button>
+		</form>
+	</div>
+</body>
+</html>
